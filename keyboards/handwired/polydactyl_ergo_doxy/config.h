@@ -62,17 +62,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DIODE_DIRECTION COL2ROW
 
 // WS2812 RGB LED strip input and number of LEDs
-#define RGBLED_NUM 16
-#define RGBLED_SPLIT { 8, 8 }
+#define RGBLED_NUM 8
+//#define RGBLED_SPLIT { 8, 8 }
 #define RGB_DI_PIN B7
 #define RGBLIGHT_ANIMATIONS
 
 // borrowed from planck/rev6
-#define DRIVER_LED_TOTAL RGBLED_NUM
-#define WS2812_PWM_DRIVER PWMD4
-#define WS2812_PWM_CHANNEL 4
-#define WS2812_PWM_PAL_MODE 1
-#define WS2812_DMA_STREAM STM32_DMA1_STREAM2
-#define WS2812_DMA_CHANNEL 4
+//#define DRIVER_LED_TOTAL RGBLED_NUM
+//#define WS2812_PWM_DRIVER PWMD4
+//#define WS2812_PWM_CHANNEL 1
+//#define WS2812_PWM_PAL_MODE 2
+//#define WS2812_DMA_STREAM STM32_DMA1_STREAM3
+//#define WS2812_DMA_CHANNEL 3
 
 
