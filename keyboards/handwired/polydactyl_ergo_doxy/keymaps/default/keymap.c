@@ -8,8 +8,9 @@
 // entirely and just use numbers.
 #define _QWERTY 0
 #define _FN     1
-#define _NUMPAD 2
+#define _EMACS  2
 #define _MOUSE  3
+#define _NUMPAD 4
 
 // Some basic macros
 #define TASK    LCTL(LSFT(KC_ESC))
@@ -22,7 +23,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_QWERTY] = LAYOUT_5x7(
   // left hand
-   KC_GRV,       KC_1,     KC_2,    KC_3,   KC_4,   KC_5,   KC_ESC,
+   KC_ESC,       KC_1,     KC_2,    KC_3,   KC_4,   KC_5,   KC_GRV,
    KC_TAB,       KC_Q,     KC_W,    KC_E,   KC_R,   KC_T,   KC_LBRC,
    KC_LCTL,      KC_A,     KC_S,    KC_D,   KC_F,   KC_G,   TAB_RO,
    KC_LSPO,      KC_Z,     KC_X,    KC_C,   KC_V,   KC_B,
@@ -42,23 +43,63 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_FN] = LAYOUT_5x7(
   // left hand
-   _______,   KC_F1,     KC_F2,      KC_F3,    KC_F4,     KC_F5,    KC_F11,
-   _______,   _______,   _______,    _______,  _______,   _______,  DEBUG,
-   _______,   _______,   _______,    _______,  _______,   _______,  RESET,
+   RGB_TOG,  KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F11,
+   RGB_MOD,  _______,  _______,  _______,  _______,  _______,  DEBUG,
+   _______,  _______,  _______,  _______,  _______,  _______,  RESET,
+   _______,  _______,  _______,  _______,  _______,  _______,
+   _______,  _______,  _______,  _______,
+                               _______, _______,
+                               _______, _______,
+                               _______, _______,
+        // right hand
+                     KC_F12,    KC_F6,   KC_F7,    KC_F8,    KC_F9,    KC_F10,   _______,
+                     _______,  _______,  _______,  _______,  _______,  _______,  _______,
+                     _______,  _______,  _______,  _______,  _______,  _______,  _______,
+                               _______,  _______,  _______,  _______,  _______,  _______,
+                                                   _______,  _______,  _______,  _______,
+        _______, _______,
+        _______, _______,
+        _______, _______),
+
+[_EMACS] = LAYOUT_5x7(
+  // left hand
+   _______,   _______,   _______,   KC_END,   _______,   _______,  _______,
+   _______,   _______,   _______,   _______,   _______,   _______,  _______,
+   _______,   KC_HOME,   _______,   KC_DEL,    KC_RGHT,   _______,  _______,
    _______,   _______,   _______,   _______,   _______,   _______,
    _______,   _______,   _______,   _______,
                                _______, _______,
                                _______, _______,
                                _______, _______,
         // right hand
-                     KC_F12,     KC_F6,     KC_F7,     KC_F8,    KC_F9,    KC_F10,    _______,
-                     _______,   _______,   _______,   _______,   _______,   _______,   _______,
-                     _______,   _______,   _______,   _______,   _______,   _______,   _______,
-                                _______,   _______,   _______,   _______,   _______,   _______,
-                                                      _______,   _______,   _______,   _______,
+                     _______,   _______,   _______,     _______,   _______,   _______,   _______,
+                     _______,   _______,   _______,     _______,   _______,   _______,   _______,
+                     _______,   KC_BSPC,   _______,     _______,   _______,   _______,   _______,
+                                _______,   _______,     _______,   _______,   _______,   _______,
+                                                        _______,   _______,   _______,   _______,
         _______, _______,
         _______, _______,
         _______, _______),
+
+[_MOUSE] = LAYOUT_5x7(
+  // left hand
+   CK_TOGG,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,
+   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
+                                                         KC_BTN1, KC_BTN2,
+                                                         XXXXXXX, KC_BTN3,
+                                                         KC_BTN4, KC_BTN5,
+        // right hand
+                     KC_ACL0,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,
+                     KC_ACL1,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,
+                     KC_ACL2,  KC_MS_L,  KC_MS_D,  KC_MS_U,  KC_MS_R,   XXXXXXX,   XXXXXXX,
+                               KC_WH_L,  KC_WH_D,  KC_WH_U,  KC_WH_R,   XXXXXXX,   XXXXXXX,
+                                                   XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,
+                     KC_BTN2, KC_BTN1,
+                     KC_BTN3, XXXXXXX,
+					 KC_BTN4, KC_BTN5),
 
 [_NUMPAD] = LAYOUT_5x7(
   // left hand
@@ -79,25 +120,4 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_PENT, _______,
         _______, _______,
         _______, _______),
-
-[_MOUSE] = LAYOUT_5x7(
-  // left hand
-   CK_TOGG,   _______,   _______,   _______,  _______,  _______,  _______,
-   _______,   _______,   _______,   _______,  _______,  _______,  _______,
-   _______,   _______,   _______,   _______,  _______,  _______,  _______,
-   _______,   _______,   _______,   _______,  _______,  _______,
-   _______,   _______,   _______,   _______,
-                                                         KC_BTN1, KC_BTN2,
-                                                         _______, KC_BTN3,
-                                                         _______, _______,
-        // right hand
-                     KC_ACL0,  _______,  _______,  _______,  _______,   _______,   _______,
-                     KC_ACL1,  _______,  _______,  _______,  _______,   _______,   _______,
-                     KC_ACL2,  KC_MS_L,  KC_MS_D,  KC_MS_U,  KC_MS_R,   _______,   _______,
-                               KC_WH_L,  KC_WH_D,  KC_WH_U,  KC_WH_R,   _______,   _______,
-                                                   _______,  _______,   _______,   _______,
-                     KC_BTN2, KC_BTN1,
-                     KC_BTN3, _______,
-                     _______, _______),
-
 };

@@ -43,9 +43,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SOFT_SERIAL_PIN A10 // Proton C RX serial
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
-#define LOCKING_SUPPORT_ENABLE
+// #define LOCKING_SUPPORT_ENABLE
 /* Locking resynchronize hack */
-#define LOCKING_RESYNC_ENABLE
+// #define LOCKING_RESYNC_ENABLE
 
 /* Enables This makes it easier for fast typists to use dual-function keys */
 #define PERMISSIVE_HOLD
@@ -60,26 +60,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MATRIX_COL_PINS { B6, B5, B4, B3, B2, B1, B0 }
 
 #define DIODE_DIRECTION COL2ROW
-//#define DIODE_DIRECTION ROW2COL
 
 // WS2812 RGB LED strip input and number of LEDs
-//#define RGB_DI_PIN D3
-//#define RGBLED_NUM 12
+#define RGBLED_NUM 16
+#define RGBLED_SPLIT { 8, 8 }
+#define RGB_DI_PIN B7
+#define RGBLIGHT_ANIMATIONS
 
-/*
- * Feature disable options
- *  These options are also useful to firmware size reduction.
- */
+// borrowed from planck/rev6
+#define DRIVER_LED_TOTAL RGBLED_NUM
+#define WS2812_PWM_DRIVER PWMD4
+#define WS2812_PWM_CHANNEL 4
+#define WS2812_PWM_PAL_MODE 1
+#define WS2812_DMA_STREAM STM32_DMA1_STREAM2
+#define WS2812_DMA_CHANNEL 4
 
-/* disable debug print */
-// #define NO_DEBUG
 
-/* disable print */
-// #define NO_PRINT
-
-/* disable action features */
-//#define NO_ACTION_LAYER
-//#define NO_ACTION_TAPPING
-//#define NO_ACTION_ONESHOT
-//#define NO_ACTION_MACRO
-//#define NO_ACTION_FUNCTION
