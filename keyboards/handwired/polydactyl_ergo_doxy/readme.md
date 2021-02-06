@@ -1,7 +1,21 @@
-Dactyl Manuform (4x5, 5x6, 5x7, 6x6)
+Basically Dactyl Manuform 5x7
 ======
 the [Dactyl-Manuform](https://github.com/tshort/dactyl-keyboard) is a split curved keyboard based on the design of [adereth dactyl](https://github.com/adereth/dactyl-keyboard) and thumb cluster design of the [manuform](https://geekhack.org/index.php?topic=46015.0) keyboard, the hardware is similar to the let's split keyboard. all information needed for making one is in the first link.
 ![Imgur](https://i.imgur.com/7y0Vbyd.jpg)
+
+The Polydactyl Ergo-Doxy is just a Dactyl Manuform using a pair of Proton C MCUs and serial for synchronizing the halves.
+
+## special flashing instructions
+
+With the Polydactyl Ergo-Doxy, I'm using an unusual flashing scheme as the two halves get slightly different configs.
+The right-hand side has RGB LEDs active, and it serves as the controller for the LEDs in both halves as I had issues
+getting the right combination of settings to drive RGB with the style of serial interconnect between the sides and the
+Cortex ARM chip in the Proton C. So there's a separate layout for each half with nearly-identical configs.
+
+```
+qmk flash -kb handwired/polydactyl_ergo_doxy -km left
+qmk flash -kb handwired/polydactyl_ergo_doxy -km right
+```
 
 
 ## First Time Setup
@@ -30,20 +44,6 @@ For more information on customizing keymaps, take a look at the primary document
 
 ## Keymaps
 
-### [Keymaps 4x5](/keyboards/handwired/dactyl_manuform/4x5/keymaps/)
-
-#### Default
-Simple QWERTY layout with 3 Layers.
-#### Dvorak
-
-### [Keymaps 5x6](/keyboards/handwired/dactyl_manuform/5x6/keymaps/)
-
-#### Default
-Just a copy of the Impstyle keymap. Feel free to adjust it.
-
-#### Impstyle
-A simple QWERTY keymap with 3 Layers. Both sides are connected via serial and the Left ist the master.
-
 ### [Keymaps 5x7 aka almost Ergodox](/keyboards/handwired/dactyl_manuform/5x7/keymaps/)
 #### Default
 Keymap of Loligagger from geekhack.
@@ -53,7 +53,7 @@ Keymap of Loligagger from geekhack.
 #### Default
 Simple QWERTY layout with 3 Layers.
 
-## Required Hardware
+# Required Hardware
 
 Apart from diodes and key switches for the keyboard matrix in each half, you
 will need:
